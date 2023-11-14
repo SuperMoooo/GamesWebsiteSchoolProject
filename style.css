@@ -1,0 +1,161 @@
+@import url('https://fonts.cdnfonts.com/css/gotham-6');
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+    font-family: 'Gotham', sans-serif;
+    overflow-x: hidden;
+}
+
+:root {
+    --primaryColor: #ff9f1c;
+    --secondaryColor: #f2ebd8;
+    --formColor: #72788d;
+    --white: #fdfffc;
+    --black: #000000;
+    --link: #72788d;
+    --linkHover: #959ab2;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(
+        to bottom,
+        #1e2229,
+        #25272d,
+        #2c2d31,
+        #333335,
+        #393939
+    );
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.login-section {
+    background: var(--formColor);
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    flex-direction: column;
+    background: rgba(114, 120, 141, 0.1);
+    transition: 0.5s ease;
+}
+
+.login-title {
+    margin: 30px 0 0px 0;
+    color: var(--primaryColor);
+    font-size: 34px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.login-inputs {
+    margin: 15px;
+}
+
+.login-inputs .input-email,
+.input-name,
+.input-password,
+.input-verify-password {
+    padding: 15px;
+    width: 380px;
+    position: relative;
+    transition: 0.5s ease;
+}
+
+.input:focus {
+    border-bottom: 1px solid var(--primaryColor);
+    color: var(--primaryColor);
+}
+
+.input {
+    padding: 10px 34px 10px 0px;
+    width: 100%;
+    border-radius: 2px;
+    background: none;
+    border-bottom: 1px solid var(--secondaryColor);
+    color: var(--secondaryColor);
+    font-size: 17px;
+}
+
+.input::placeholder {
+    color: var(--secondaryColor);
+    font-size: 17px;
+    transition: 0.5s ease;
+}
+
+.icon_user {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+}
+
+.icon_eye,
+.icon_eye2 {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    cursor: pointer;
+}
+
+.register-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.register-container a {
+    color: var(--link);
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.register-container p {
+    color: var(--white);
+    text-align: center;
+    margin: 5px;
+}
+
+.register-container a:hover {
+    text-decoration: underline;
+    color: var(--linkHover);
+}
+
+.btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn-container button {
+    cursor: pointer;
+    background: none;
+    border: 1px solid var(--primaryColor);
+    border-radius: 6px;
+    padding: 10px;
+    color: var(--white);
+    width: 100%;
+    margin: 30px;
+    font-size: 18px;
+    transition: all 0.4s ease;
+}
+
+.btn-container button:hover {
+    border: 1px solid var(--primaryColor);
+    color: var(--primaryColor);
+    font-size: 22px;
+}

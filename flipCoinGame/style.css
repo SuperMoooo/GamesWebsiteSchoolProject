@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400;500&display=swap');
+* {
+    font-family: 'Source Code Pro', monospace;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #373737;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    background-color: #424242;
+    border-radius: 8px;
+    width: 500px;
+    height: 500px;
+    flex-direction: column;
+    backdrop-filter: blur(12px);
+}
+
+.score,
+.coinSpace,
+.btnSpace {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.score {
+    margin: 10px;
+}
+
+.score > * {
+    margin: 10px 70px;
+    padding: 5px;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.coinSpace {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    margin: 50px auto;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.headCoin,
+.tailsCoin {
+    scale: 0.6;
+    position: absolute;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    left: 105px;
+    transform-origin: center;
+}
+.headCoin {
+    transform: rotateX(180deg);
+}
+
+@keyframes flipCoinTails {
+    0% {
+        transform: rotateX(0);
+    }
+    100% {
+        transform: rotateX(2160deg);
+    }
+}
+
+@keyframes flipCoinHead {
+    0% {
+        transform: rotateX(0);
+    }
+    100% {
+        transform: rotateX(1980deg);
+    }
+}
+
+.btnSpace > * {
+    background: none;
+    outline: none;
+    padding: 10px;
+    border: 4px solid #373737;
+    border-radius: 8px;
+    margin: 10px 30px;
+    text-transform: uppercase;
+    box-shadow: 1px 3px #373737;
+    transform-origin: center;
+    transition: 0.4s ease;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btnSpace > *:active {
+    box-shadow: none;
+}
+
+.btnSpace > *:hover {
+    font-size: 16px;
+}
+
+#flipBtn:disabled {
+    opacity: 0.3;
+    cursor: auto;
+}
+
+#flipBtn:disabled:active {
+    box-shadow: 1px 3px #373737;
+}
+
+#flipBtn:disabled:hover {
+    font-size: 14px;
+}
+
+#resetBtn:disabled {
+    opacity: 0.3;
+    cursor: auto;
+}
+
+#resetBtn:disabled:active {
+    box-shadow: 1px 3px #373737;
+}
+
+#resetBtn:disabled:hover {
+    font-size: 14px;
+}
