@@ -12,10 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const botCenterBox = document.querySelector('#botC');
     const botRightBox = document.querySelector('#botR');
 
-    const resetBtn = document.querySelector('.reset-btn');
-
-    const textWinner = document.querySelector('.textWinner');
-
     const turnIndicator = document.querySelector('.turn-indicator');
     turnIndicator.innerHTML = 'Turn: X';
 
@@ -26,9 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function restartGame() {
+    function restartGameBot() {
+        alert('WINNER: Robot bipp buu bipp');
+        drawCount = 0;
         removeValueToEachBox();
-        textWinner.innerHTML = '';
         turn = 0;
         turnIndicator.innerHTML = 'Turn: X';
         boxes.forEach((box) => {
@@ -39,6 +36,38 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    function restartGameDraw() {
+        alert('DRAW!!!');
+        drawCount = 0;
+        removeValueToEachBox();
+        turn = 0;
+        turnIndicator.innerHTML = 'Turn: X';
+        boxes.forEach((box) => {
+            if (box.classList.contains('clicked')) {
+                box.querySelector('.value').textContent = '';
+                box.classList.remove('clicked');
+                box.style.color = '';
+            }
+        });
+    }
+
+    function restartGameHuman() {
+        alert('WINNER: Human');
+        drawCount = 0;
+        removeValueToEachBox();
+        turn = 0;
+        turnIndicator.innerHTML = 'Turn: X';
+        boxes.forEach((box) => {
+            if (box.classList.contains('clicked')) {
+                box.querySelector('.value').textContent = '';
+                box.classList.remove('clicked');
+                box.style.color = '';
+            }
+        });
+    }
+
+    let drawCount = 0;
 
     function verifyWinner() {
         //horizontalPart
@@ -51,19 +80,21 @@ document.addEventListener('DOMContentLoaded', () => {
             topLeftBox.style.color = '#5ead7b';
             topCenterBox.style.color = '#5ead7b';
             topRightBox.style.color = '#5ead7b';
-            textWinner.innerHTML = 'Winner: X';
+            setTimeout(() => restartGameHuman(), 800);
             endGame();
+            return;
         }
         if (
             topLeftBox.classList.contains('O') &&
             topCenterBox.classList.contains('O') &&
             topRightBox.classList.contains('O')
         ) {
-            topLeftBox.style.color = '#5ead7b';
-            topCenterBox.style.color = '#5ead7b';
-            topRightBox.style.color = '#5ead7b';
-            textWinner.innerHTML = 'Winner: O';
+            topLeftBox.style.color = '#e06f67';
+            topCenterBox.style.color = '#e06f67';
+            topRightBox.style.color = '#e06f67';
+            setTimeout(() => restartGameBot(), 800);
             endGame();
+            return;
         }
         //midPart
         if (
@@ -74,8 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
             midLeftBox.style.color = '#5ead7b';
             midCenterBox.style.color = '#5ead7b';
             midRightBox.style.color = '#5ead7b';
-            textWinner.innerHTML = 'Winner: X';
+            setTimeout(() => restartGameHuman(), 800);
             endGame();
+            return;
         }
 
         if (
@@ -83,11 +115,12 @@ document.addEventListener('DOMContentLoaded', () => {
             midCenterBox.classList.contains('O') &&
             midRightBox.classList.contains('O')
         ) {
-            midLeftBox.style.color = '#5ead7b';
-            midCenterBox.style.color = '#5ead7b';
-            midRightBox.style.color = '#5ead7b';
-            textWinner.innerHTML = 'Winner: O';
+            midLeftBox.style.color = '#e06f67';
+            midCenterBox.style.color = '#e06f67';
+            midRightBox.style.color = '#e06f67';
+            setTimeout(() => restartGameBot(), 800);
             endGame();
+            return;
         }
 
         //botPart
@@ -99,8 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
             botLeftBox.style.color = '#5ead7b';
             botCenterBox.style.color = '#5ead7b';
             botRightBox.style.color = '#5ead7b';
-            textWinner.innerHTML = 'Winner: X';
+            setTimeout(() => restartGameHuman(), 800);
             endGame();
+            return;
         }
 
         if (
@@ -108,11 +142,12 @@ document.addEventListener('DOMContentLoaded', () => {
             botCenterBox.classList.contains('O') &&
             botRightBox.classList.contains('O')
         ) {
-            botLeftBox.style.color = '#5ead7b';
-            botCenterBox.style.color = '#5ead7b';
-            botRightBox.style.color = '#5ead7b';
-            textWinner.innerHTML = 'Winner: O';
+            botLeftBox.style.color = '#e06f67';
+            botCenterBox.style.color = '#e06f67';
+            botRightBox.style.color = '#e06f67';
+            setTimeout(() => restartGameBot(), 800);
             endGame();
+            return;
         }
 
         //verticalPart
@@ -126,8 +161,9 @@ document.addEventListener('DOMContentLoaded', () => {
             topLeftBox.style.color = '#5ead7b';
             midLeftBox.style.color = '#5ead7b';
             botLeftBox.style.color = '#5ead7b';
-            textWinner.innerHTML = 'Winner: X';
+            setTimeout(() => restartGameHuman(), 800);
             endGame();
+            return;
         }
 
         if (
@@ -135,11 +171,12 @@ document.addEventListener('DOMContentLoaded', () => {
             midLeftBox.classList.contains('O') &&
             botLeftBox.classList.contains('O')
         ) {
-            topLeftBox.style.color = '#5ead7b';
-            midLeftBox.style.color = '#5ead7b';
-            botLeftBox.style.color = '#5ead7b';
-            textWinner.innerHTML = 'Winner: O';
+            topLeftBox.style.color = '#e06f67';
+            midLeftBox.style.color = '#e06f67';
+            botLeftBox.style.color = '#e06f67';
+            setTimeout(() => restartGameBot(), 800);
             endGame();
+            return;
         }
         //midPart
         if (
@@ -150,8 +187,9 @@ document.addEventListener('DOMContentLoaded', () => {
             topCenterBox.style.color = '#5ead7b';
             midCenterBox.style.color = '#5ead7b';
             botCenterBox.style.color = '#5ead7b';
-            textWinner.innerHTML = 'Winner: X';
+            setTimeout(() => restartGameHuman(), 800);
             endGame();
+            return;
         }
 
         if (
@@ -159,11 +197,12 @@ document.addEventListener('DOMContentLoaded', () => {
             midCenterBox.classList.contains('O') &&
             botCenterBox.classList.contains('O')
         ) {
-            topCenterBox.style.color = '#5ead7b';
-            midCenterBox.style.color = '#5ead7b';
-            botCenterBox.style.color = '#5ead7b';
-            textWinner.innerHTML = 'Winner: O';
+            topCenterBox.style.color = '#e06f67';
+            midCenterBox.style.color = '#e06f67';
+            botCenterBox.style.color = '#e06f67';
+            setTimeout(() => restartGameBot(), 800);
             endGame();
+            return;
         }
         //rightPart
         if (
@@ -174,8 +213,9 @@ document.addEventListener('DOMContentLoaded', () => {
             topRightBox.style.color = '#5ead7b';
             midRightBox.style.color = '#5ead7b';
             botRightBox.style.color = '#5ead7b';
-            textWinner.innerHTML = 'Winner: X';
+            setTimeout(() => restartGameHuman(), 800);
             endGame();
+            return;
         }
 
         if (
@@ -183,11 +223,12 @@ document.addEventListener('DOMContentLoaded', () => {
             midRightBox.classList.contains('O') &&
             botRightBox.classList.contains('O')
         ) {
-            topRightBox.style.color = '#5ead7b';
-            midRightBox.style.color = '#5ead7b';
-            botRightBox.style.color = '#5ead7b';
-            textWinner.innerHTML = 'Winner: O';
+            topRightBox.style.color = '#e06f67';
+            midRightBox.style.color = '#e06f67';
+            botRightBox.style.color = '#e06f67';
+            setTimeout(() => restartGameBot(), 800);
             endGame();
+            return;
         }
 
         //diagonalPart
@@ -201,8 +242,9 @@ document.addEventListener('DOMContentLoaded', () => {
             topLeftBox.style.color = '#5ead7b';
             midCenterBox.style.color = '#5ead7b';
             botRightBox.style.color = '#5ead7b';
-            textWinner.innerHTML = 'Winner: X';
+            setTimeout(() => restartGameHuman(), 800);
             endGame();
+            return;
         }
 
         if (
@@ -210,11 +252,12 @@ document.addEventListener('DOMContentLoaded', () => {
             midCenterBox.classList.contains('O') &&
             botRightBox.classList.contains('O')
         ) {
-            topLeftBox.style.color = '#5ead7b';
-            midCenterBox.style.color = '#5ead7b';
-            botRightBox.style.color = '#5ead7b';
-            textWinner.innerHTML = 'Winner: O';
+            topLeftBox.style.color = '#e06f67';
+            midCenterBox.style.color = '#e06f67';
+            botRightBox.style.color = '#e06f67';
+            setTimeout(() => restartGameBot(), 800);
             endGame();
+            return;
         }
 
         //RightTop to botLeft
@@ -227,8 +270,9 @@ document.addEventListener('DOMContentLoaded', () => {
             topRightBox.style.color = '#5ead7b';
             midCenterBox.style.color = '#5ead7b';
             botLeftBox.style.color = '#5ead7b';
-            textWinner.innerHTML = 'Winner: X';
+            setTimeout(() => restartGameHuman(), 800);
             endGame();
+            return;
         }
 
         if (
@@ -236,11 +280,26 @@ document.addEventListener('DOMContentLoaded', () => {
             midCenterBox.classList.contains('O') &&
             botLeftBox.classList.contains('O')
         ) {
-            topRightBox.style.color = '#5ead7b';
-            midCenterBox.style.color = '#5ead7b';
-            botLeftBox.style.color = '#5ead7b';
-            textWinner.innerHTML = 'Winner: O';
+            topRightBox.style.color = '#e06f67';
+            midCenterBox.style.color = '#e06f67';
+            botLeftBox.style.color = '#e06f67';
+            setTimeout(() => restartGameBot(), 800);
             endGame();
+            return;
+        }
+        if (drawCount === 9) {
+            topLeftBox.style.color = '#c9b785';
+            topCenterBox.style.color = '#c9b785';
+            topRightBox.style.color = '#c9b785';
+            //--
+            midLeftBox.style.color = '#c9b785';
+            midCenterBox.style.color = '#c9b785';
+            midRightBox.style.color = '#c9b785';
+            //--
+            botLeftBox.style.color = '#c9b785';
+            botCenterBox.style.color = '#c9b785';
+            botRightBox.style.color = '#c9b785';
+            setTimeout(() => restartGameDraw(), 800);
         }
     }
 
@@ -324,28 +383,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let turn = 0;
-
+    let boxId;
     boxes.forEach((box) => {
         box.addEventListener('click', () => {
-            const boxId = box.getAttribute('id');
             if (!box.classList.contains('clicked')) {
                 if (turn === 0) {
                     box.querySelector('.value').textContent = 'X';
                     turn = 1;
+                    drawCount += 1;
                     turnIndicator.innerHTML = 'Turn: O';
-                    giveValueToEachBox(boxId, 'X');
+                    giveValueToEachBox(box.getAttribute('id'), 'X');
+                    setTimeout(() => botAction(box), 500); // Pass the clicked box to botAction
                 } else {
-                    box.querySelector('.value').textContent = 'O';
-                    turn = 0;
-                    turnIndicator.innerHTML = 'Turn: X';
-                    giveValueToEachBox(boxId, 'O');
+                    return true;
                 }
                 box.classList.add('clicked');
             }
         });
     });
 
-    resetBtn.addEventListener('click', restartGame);
+    function botAction(clickedBox) {
+        let randomNumber = Math.floor(Math.random() * 9);
+        let box = boxes[randomNumber];
+
+        if (!box.classList.contains('clicked')) {
+            box.querySelector('.value').textContent = 'O';
+            turn = 0;
+            turnIndicator.innerHTML = 'Turn: X';
+            giveValueToEachBox(box.getAttribute('id'), 'O');
+            box.classList.add('clicked');
+            drawCount += 1;
+        } else {
+            botAction(clickedBox); // Retry if the box is already clicked
+        }
+    }
 
     //end
 });
