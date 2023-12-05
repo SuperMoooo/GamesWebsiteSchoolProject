@@ -35,6 +35,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 box.style.color = '';
             }
         });
+
+        fetch('../lostScore.php')
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then((data) => {
+                // Handle the response from the PHP script (if needed)
+                console.log(data);
+            })
+            .catch((error) => {
+                console.error(
+                    'There was a problem with the fetch operation:',
+                    error
+                );
+            });
     }
 
     function restartGameDraw() {
@@ -65,6 +83,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 box.style.color = '';
             }
         });
+
+        fetch('../winScore.php')
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then((data) => {
+                // Handle the response from the PHP script (if needed)
+                console.log(data);
+            })
+            .catch((error) => {
+                console.error(
+                    'There was a problem with the fetch operation:',
+                    error
+                );
+            });
     }
 
     let drawCount = 0;
@@ -393,7 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     drawCount += 1;
                     turnIndicator.innerHTML = 'Turn: O';
                     giveValueToEachBox(box.getAttribute('id'), 'X');
-                    setTimeout(() => botAction(box), 500); // Pass the clicked box to botAction
+                    setTimeout(() => botAction(box), 500);
                 } else {
                     return true;
                 }
@@ -414,7 +450,7 @@ document.addEventListener('DOMContentLoaded', () => {
             box.classList.add('clicked');
             drawCount += 1;
         } else {
-            botAction(clickedBox); // Retry if the box is already clicked
+            botAction(clickedBox);
         }
     }
 

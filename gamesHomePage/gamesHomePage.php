@@ -14,7 +14,7 @@
             <a href="ticTacToe/index.html" class="link">Tic Tac Toe</a>
             <a href="rockPaperScissors/index.html" class="link">Rock Paper Scissors</a>
             <a href="flipCoinGame/index.html" class="link">Flip the coin</a>
-            <a href="" class="link">LearderBoard</a>
+            <a href="leaderboard.php" class="link">LearderBoard</a>
         </div>
 
         <div class="otherLinks">

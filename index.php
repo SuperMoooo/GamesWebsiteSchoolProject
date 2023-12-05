@@ -1,7 +1,32 @@
 <?php
 
+
+
+addDatabase(connectDB());
+
+function addDatabase($conn)
+{
+    $sql = "CREATE DATABASE IF NOT EXISTS webjogos";
+    $conn->query($sql);
+
+    $sql = "CREATE TABLE IF NOT EXISTS users (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        UserEmail VARCHAR(50),
+        UserName VARCHAR(50),
+        UserPassword VARCHAR(40))";
+    $conn->query($sql);
+
+    $sql = "CREATE TABLE IF NOT EXISTS usersstats (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        GamesPlayed INT,
+        GamesWon INT,
+        GamesLost INT)";
+    $conn->query($sql);
+}
+
 $name = '';
 $password = '';
+
 
 function connectDB()
 {
@@ -16,17 +41,22 @@ function connectDB()
     return $conn;
 }
 
+
 function searchUser($name, $password, $conn)
 {
-    $sql = "SELECT UserName, UserPassword FROM users";
+    global $userId;
+
+    $sql = "SELECT id, UserName, UserPassword FROM users";
     $result = $conn->query($sql);
 
     while ($row = $result->fetch_assoc()) {
+
         $username = $row["UserName"];
         $userpassword = $row["UserPassword"];
         if ($username === $name && $password === $userpassword) {
+            $userId = $row["id"];
+            setcookie('userId', $userId, time() + 3600, '/');
             header("Location: gamesHomePage/gamesHomePage.php");
-            exit();
         } else {
             echo "<script>alert('Invalid data');</script>";
         }
@@ -38,11 +68,8 @@ if (isset($_POST['submit'])) {
     $password = $_POST['passwordName'];
 
     if ($name != null && $password != null) {
-
         $conn = connectDB();
-
         searchUser($name, $password, $conn);
-
 
         mysqli_close($conn);
     }
@@ -83,6 +110,7 @@ if (isset($_POST['submit'])) {
         </div>
     </form>
     <script src="index.js"></script>
+
 </body>
 
 </html>

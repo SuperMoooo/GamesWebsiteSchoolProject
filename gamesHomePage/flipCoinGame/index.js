@@ -96,6 +96,24 @@ document.addEventListener('DOMContentLoaded', () => {
         playerScore.innerHTML = `Player: ${player}`;
         botScore.innerHTML = `Bot: ${bot}`;
         alert('Winner: Human');
+
+        fetch('../winScore.php')
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then((data) => {
+                // Handle the response from the PHP script (if needed)
+                console.log(data);
+            })
+            .catch((error) => {
+                console.error(
+                    'There was a problem with the fetch operation:',
+                    error
+                );
+            });
     }
 
     function resetScoresBot() {
@@ -109,6 +127,24 @@ document.addEventListener('DOMContentLoaded', () => {
         playerScore.innerHTML = `Player: ${player}`;
         botScore.innerHTML = `Bot: ${bot}`;
         alert('Winner: Robot bippp buuuu bip bu');
+
+        fetch('../lostScore.php')
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then((data) => {
+                // Handle the response from the PHP script (if needed)
+                console.log(data);
+            })
+            .catch((error) => {
+                console.error(
+                    'There was a problem with the fetch operation:',
+                    error
+                );
+            });
     }
 
     //end
